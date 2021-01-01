@@ -7,7 +7,6 @@ const Categories = ({items}) => {
           const setActive = (ind) =>{
               setIndexNumber(ind)
           }
-          console.log(indexNumber)
     return (
         <div className="categories">
             <ul>
@@ -21,7 +20,6 @@ const Categories = ({items}) => {
                         return (
                             <li key={`${index}_${item}`}
                                 className={indexNumber===index ? "active" : ""}
-                                // onClick={()=>setIndexNumber(index)}
                                 onClick={()=>setActive(index)}
                             >{item}</li>
                         )

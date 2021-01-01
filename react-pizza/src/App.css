@@ -71,7 +71,7 @@ h2 {
 a {
   text-decoration: none;
 }
-
+/*------------------------------------------------------------------------------------------*/
 .header {
   border-bottom: 1px solid #f6f6f6;
   padding: 40px 0;
@@ -110,7 +110,7 @@ a {
 .header__logo p {
   color: #7b7b7b;
 }
-
+/*------------------------------------------------------------------------------------------*/
 .button {
   display: inline-block;
   background-color: #fe5f1e;
@@ -260,7 +260,7 @@ a {
   font-weight: 600;
   font-size: 16px;
 }
-
+/*------------------------------------------------------------------------------------------*/
 .categories ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -295,7 +295,7 @@ a {
   background-color: #282828;
   color: #fff;
 }
-
+/*------------------------------------------------------------------------------------------*/
 .sort {
   position: relative;
 }
@@ -311,7 +311,13 @@ a {
 
 .sort__label svg {
   margin-right: 8px;
+  transform: rotate(180deg);
 }
+.sort__label .rotate{
+  transform: rotate(0);
+}
+
+
 
 .sort__label b {
   margin-right: 8px;
@@ -353,7 +359,7 @@ a {
   font-weight: bold;
   color: #fe5f1e;
 }
-
+/*------------------------------------------------------------------------------------------*/
 .pizza-block {
   width: 280px;
   text-align: center;
@@ -443,11 +449,11 @@ a {
   line-height: 27px;
   letter-spacing: 0.015em;
 }
-
+/*------------------------------------------------------------------------------------------*/
 body {
   background-color: #ffdf8c;
 }
-
+/*------------------------------------------------------------------------------------------*/
 .wrapper {
   width: calc(100vw - 100px);
   height: 100%;
@@ -456,7 +462,7 @@ body {
   border-radius: 10px;
   max-width: 1400px;
 }
-
+/*------------------------------------------------------------------------------------------*/
 .content {
   padding: 40px 0;
 }
@@ -487,7 +493,7 @@ body {
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
-
+/*------------------------------------------------------------------------------------------*/
 .container {
   width: 90%;
   margin: 0 auto;
