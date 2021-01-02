@@ -1,8 +1,21 @@
 import React from "react";
 // import '../App.css';
 import './PizzaBlock.css';
+import classNames from "classnames"
 
-const PizzaBlock = ({name,price,imageUrl}) => {
+const PizzaBlock = ({name,price,imageUrl,sizes,types}) => {
+    const availableTypes = ["тонкое","традиционное"];
+    const availableSizes = [26, 30, 40];
+    const [activeType, setActiveType] = React.useState(types[0])
+    const [activeSize, setActiveSize] = React.useState(0)
+
+    const setActiveT = (ind) => {
+        setActiveType(ind);
+    }
+    const setActiveS = (ind) => {
+        setActiveSize(ind);
+    }
+
     return(
         <div className="pizza-block">
             <img
@@ -13,14 +26,34 @@ const PizzaBlock = ({name,price,imageUrl}) => {
             <h4 className="pizza-block__title">{name}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
+                    {
+                        availableTypes.map((item,index)=> {
+                         return   <li
+
+                                onClick={()=>setActiveT(index)}
+                                key={`${item}_${index}`}
+                                className={classNames({
+                                    active: activeType === index,
+                                    disabled: !types.includes(index)
+                                })}
+                            >{item}</li>
+                        })
+                    }
                 </ul>
                 <ul>
-                    <li className="active">26 см.
-                    </li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
+                    {
+                        availableSizes.map((item,index)=> {
+                            return   <li
+
+                                onClick={()=>setActiveS(index)}
+                                key={`${item}_${index}`}
+                                className={classNames({
+                                    active: activeSize === index,
+                                    disabled: !sizes.includes(item)
+                                })}
+                            >{item} см.</li>
+                        })
+                    }
                 </ul>
             </div>
             <div className="pizza-block__bottom">
