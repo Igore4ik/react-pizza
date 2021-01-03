@@ -1,15 +1,14 @@
 import React from "react";
 import '../App.css';
 
-const Popup = ({items}) => {
-
+const Popup = React.memo(({sortBy, items, setFilter}) => {
 
     const sortRef = React.useRef();
-    const [activeItem, setActiveItem] = React.useState(0);
     const [visiblePopUp, setVisiblePopUp] = React.useState(false);
     React.useEffect(() => {
         document.body.addEventListener("click", handleClick)
     }, []);
+    const activeItem = items.find(item=> item.type===sortBy);
 
     const handleClick = (e) => {
         if (!e.path.includes(sortRef.current)) {
@@ -21,9 +20,9 @@ const Popup = ({items}) => {
     const onToggleVisiblePopup = () => {
         setVisiblePopUp(!visiblePopUp)
     }
-    const setActive = (ind) => {
-        setActiveItem(ind);
+    const setActive = ( type) => {
         setVisiblePopUp(false);
+        setFilter(type)
     }
 
 
@@ -44,17 +43,17 @@ const Popup = ({items}) => {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={onToggleVisiblePopup}>{items[activeItem].name}</span>
+                <span onClick={onToggleVisiblePopup}>{activeItem.name}</span>
             </div>
             {visiblePopUp &&
             <div className="sort__popup">
                 <ul>
                     {items &&
-                    items.map((obj,index) => {
+                    items.map((obj) => {
                         return (
                             <li key={`${obj.id}`}
-                                className={activeItem === index ? "active" : ""}
-                                onClick={() => setActive(index)}
+                                className={sortBy === obj.type ? "active" : ""}
+                                onClick={() => setActive( obj.type)}
                             >
                                 {obj.name}
                             </li>
@@ -68,6 +67,6 @@ const Popup = ({items}) => {
         </div>
 
     )
-}
+})
 
 export default Popup;

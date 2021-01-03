@@ -1,6 +1,7 @@
 const initialState = {
-    sortBy: "price",
-    categories: 0
+    // sortBy: 0,
+    sortBy: "popular",
+    categories: null
 }
 
 export const filterReducer = (state = initialState, action) => {

@@ -2,33 +2,32 @@ import React from "react";
 import '../App.css';
 
 
-const Categories = ({items}) => {
-    const [indexNumber, setIndexNumber] = React.useState(null) ;
-          const setActive = (ind) =>{
-              setIndexNumber(ind)
-          }
+const Categories = React.memo(({category,items,setCategory}) => {
+    // const setActive = (index) =>{
+    //     setCategory(index);
+    // }
     return (
         <div className="categories">
             <ul>
                 <li
-                    className={indexNumber===null ? "active" : ""}
-                    onClick={()=>setActive(null)}
+                    className={category===null ? "active" : ""}
+                    onClick={()=>setCategory(null)}
                 >Все</li>
 
                 {items &&
-                    items.map((item, index) => {
-                        return (
-                            <li key={`${index}_${item}`}
-                                className={indexNumber===index ? "active" : ""}
-                                onClick={()=>setActive(index)}
-                            >{item}</li>
-                        )
-                    })
+                items.map((item, index) => {
+                    return (
+                        <li key={`${index}_${item}`}
+                            className={category===index ? "active" : ""}
+                            onClick={()=>setCategory(index)}
+                        >{item}</li>
+                    )
+                })
                 }
             </ul>
         </div>
     )
-}
+})
 
 export default Categories;
 

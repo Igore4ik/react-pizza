@@ -1,5 +1,4 @@
 import React from "react";
-// import '../App.css';
 import './PizzaBlock.css';
 import classNames from "classnames"
 
@@ -28,7 +27,7 @@ const PizzaBlock = ({name,price,imageUrl,sizes,types}) => {
                 <ul>
                     {
                         availableTypes.map((item,index)=> {
-                         return   <li
+                            return   <li
 
                                 onClick={()=>setActiveT(index)}
                                 key={`${item}_${index}`}
