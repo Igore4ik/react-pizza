@@ -13,7 +13,7 @@ export const isLoad = (bool) => {
 
 export const filterThunk = (sortBy,categories)=> (dispatch)=>{
     dispatch(isLoad(false));
-    fetch(`http://localhost:3001/pizzas?${
+    fetch(`/pizzas?${
         categories !== null ? `category=${categories}` : ''}&_sort=${sortBy}&_order=desc`)
     // fetch('http://localhost:3001/pizzas')
         // fetch('http://localhost:3000/db.json')
