@@ -1,13 +1,22 @@
 import React from "react";
 import './PizzaBlock.css';
 import classNames from "classnames"
+import Button from "./Button";
+import {useDispatch} from "react-redux";
+import {cartAC} from "../redux/actions/cartAC";
 
 const PizzaBlock = ({name,price,imageUrl,sizes,types}) => {
+    const obj = { name,price,sizes,types};
+    const dispatch = useDispatch();
     const availableTypes = ["тонкое","традиционное"];
     const availableSizes = [26, 30, 40];
     const [activeType, setActiveType] = React.useState(types[0])
     const [activeSize, setActiveSize] = React.useState(0)
 
+
+    const setPizzaToCart =  () => {
+        dispatch(cartAC(obj))
+    }
     const setActiveT = (ind) => {
         setActiveType(ind);
     }
@@ -57,7 +66,7 @@ const PizzaBlock = ({name,price,imageUrl,sizes,types}) => {
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
-                <div className="button button--outline button--add">
+                <Button onAddPizza={setPizzaToCart} className="button--add" outline>
                     <svg
                         width="12"
                         height="12"
@@ -72,7 +81,7 @@ const PizzaBlock = ({name,price,imageUrl,sizes,types}) => {
                     </svg>
                     <span>Добавить</span>
                     <i>2</i>
-                </div>
+                </Button>
             </div>
         </div>
     )
